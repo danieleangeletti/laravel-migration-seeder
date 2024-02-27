@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('page-title', 'Home')
+@section('page-title', 'Trains')
 
 @section('main-content')
     <main>
         <div class="container">
             <h1>
-                MAIN
+                TRAINS
             </h1>
         </div>
     </main>
