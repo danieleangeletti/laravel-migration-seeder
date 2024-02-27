@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// Models
+use App\Models\Train;
+
 class TrainController extends Controller
 {
-    // This controller show all the data regarding the 'trains' table
     public function index()
     {
-        return view("trains.index");
+        $trains = Train::where('date', '=', '2024-02-27')->get();
+        return view("trains.index", compact("trains"));
     }
 }
