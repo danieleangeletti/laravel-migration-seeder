@@ -12,7 +12,8 @@ class TrainController extends Controller
 {
     public function index()
     {
-        $trains = Train::where('date', '=', '2024-02-27')->get();
+        $today = date("Y-m-d");
+        $trains = Train::where('date', '=', $today)->get();
         return view("trains.index", compact("trains"));
     }
 }
