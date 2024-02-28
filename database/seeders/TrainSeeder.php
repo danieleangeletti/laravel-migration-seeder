@@ -17,33 +17,17 @@ class TrainSeeder extends Seeder
     {
         Train::truncate();
 
-        $today = date("Y-m-d");
-
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $train = new Train();
-            $train->company = fake()->words(2, true);
-            $train->date = $today;
-            $train->departure_station = fake()->words(1, true);
-            $train->arrival_station = fake()->words(1, true);
+            $train->company = fake()->company();
+            $train->date = fake()->date("Y-m-d");
+            $train->departure_station = fake()->city();
+            $train->arrival_station = fake()->city();
             $train->departure_time = fake()->time();
             $train->arrival_time = fake()->time();
-            $train->train_code = fake()->words(1, true);
-            $train->in_time = fake()->numberBetween(0, 1);
-            $train->cancelled = fake()->numberBetween(0, 1);
-            $train->save();
-        }
-
-        for ($i = 0; $i < 35; $i++) {
-            $train = new Train();
-            $train->company = fake()->words(2, true);
-            $train->date = fake()->date;
-            $train->departure_station = fake()->words(1, true);
-            $train->arrival_station = fake()->words(1, true);
-            $train->departure_time = fake()->time();
-            $train->arrival_time = fake()->time();
-            $train->train_code = fake()->words(1, true);
-            $train->in_time = fake()->numberBetween(0, 1);
-            $train->cancelled = fake()->numberBetween(0, 1);
+            $train->train_code = fake()->regexify('[A-Z0-9]{7}');
+            $train->in_time = fake()->boolean();
+            $train->cancelled = fake()->boolean();
             $train->save();
         }
     }
